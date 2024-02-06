@@ -5,9 +5,7 @@ import { useSidebar } from "@/store/use-sidebar";
 import { UserItem, UserItemSkeleton } from "./user-item";
 
 interface RecommendedProps {
-  data: (User & {
-    stream: { isLive: boolean } | null;
-  })[];
+  data: (User & { stream: { isLive: boolean } | null })[];
 }
 
 const Recommended = ({ data }: RecommendedProps) => {
