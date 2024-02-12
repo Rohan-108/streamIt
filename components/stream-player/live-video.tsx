@@ -4,6 +4,8 @@ import { useTracks } from "@livekit/components-react";
 import { Participant, Track } from "livekit-client";
 import { useEffect, useRef, useState } from "react";
 import { useEventListener } from "usehooks-ts";
+import { VolumeControl } from "./volume-control";
+import { FullscreenControl } from "./fullscreen-control";
 
 interface LiveVideoProps {
   participant: Participant;
@@ -59,7 +61,7 @@ export const LiveVideo = ({ participant }: LiveVideoProps) => {
             value={volume}
             onToggle={toggleMute}
           />
-          <FullScreenConrol
+          <FullscreenControl
             isFullscreen={isFullscreen}
             onToggle={toggleFullscreen}
           />
