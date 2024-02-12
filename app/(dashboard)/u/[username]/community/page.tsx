@@ -6,7 +6,7 @@ import { DataTable } from "./_components/data-table";
 import { columns } from "./_components/columns";
 
 const CommunityPage = async () => {
-  const blockedUsers: Block[] = await getBlockedUsers();
+  const blockedUsers = await getBlockedUsers();
 
   const formattedData = blockedUsers.map((block) => ({
     ...block,

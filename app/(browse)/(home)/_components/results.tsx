@@ -1,6 +1,6 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import { getStreams } from "@/lib/feed-service";
-import { Stream } from "@prisma/client";
+import { Stream, User } from "@prisma/client";
 import { ResultCard, ResultCardSkeleton } from "./results-card";
 
 export const Results = async () => {
@@ -15,7 +15,7 @@ export const Results = async () => {
         <div className="text-muted-foreground text-sm">No Streams Found</div>
       )}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
-        {data.map((result: Partial<Stream>) => (
+        {data.map((result) => (
           <ResultCard key={result.id} data={result} />
         ))}
       </div>
