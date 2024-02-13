@@ -13,13 +13,13 @@ const Creatorlayout = async ({ params, children }: CreatorlayoutProps) => {
   const self = await getSelfByUsername(params.username);
   if (!self) redirect("/");
   return (
-    <div>
+    <>
       <Navbar />
       <div className="flex h-full pt-20">
         <Sidebar />
         <Container>{children}</Container>
       </div>
-    </div>
+    </>
   );
 };
 

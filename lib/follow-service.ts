@@ -4,7 +4,7 @@ import { getSelf } from "./auth-service";
 export const getFollowedUser = async () => {
   try {
     const self = await getSelf();
-    const users = db.follow.findMany({
+    const followedUsers = db.follow.findMany({
       where: {
         followerId: self.id,
         following: {
@@ -26,9 +26,21 @@ export const getFollowedUser = async () => {
           },
         },
       },
+      orderBy: [
+        {
+          following: {
+            stream: {
+              isLive: "desc",
+            },
+          },
+        },
+        {
+          createdAt: "desc",
+        },
+      ],
     });
-    return users;
-  } catch (error) {
+    return followedUsers;
+  } catch {
     return [];
   }
 };

@@ -17,7 +17,7 @@ export const FullscreenControl = ({
 
   const label = isFullscreen ? "Exit fullscreen" : "Enter fullscreen";
   return (
-    <div>
+    <div className="flex items-center justify-center gap-4">
       <Hint asChild label={label}>
         <button
           onClick={onToggle}

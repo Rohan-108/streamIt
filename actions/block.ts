@@ -22,7 +22,7 @@ export const onBlock = async (id: string) => {
   } catch {}
 
   revalidatePath(`/u/${self.username}/community`);
-  return blockUser;
+  return blockedUser;
 };
 
 export const onUnblock = async (id: string) => {

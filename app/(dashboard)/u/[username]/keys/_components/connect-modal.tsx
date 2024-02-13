@@ -58,7 +58,7 @@ export const ConnectModal = () => {
           </SelectTrigger>
           <SelectContent>
             <SelectItem value={RTMP}>RTMP</SelectItem>
-            <SelectItem value={WHIP}></SelectItem>
+            <SelectItem value={WHIP}>WHIP</SelectItem>
           </SelectContent>
         </Select>
         <Alert>

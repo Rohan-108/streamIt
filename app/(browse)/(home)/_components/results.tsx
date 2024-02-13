@@ -1,6 +1,5 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import { getStreams } from "@/lib/feed-service";
-import { Stream, User } from "@prisma/client";
 import { ResultCard, ResultCardSkeleton } from "./results-card";
 
 export const Results = async () => {

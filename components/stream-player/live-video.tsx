@@ -46,11 +46,13 @@ export const LiveVideo = ({ participant }: LiveVideoProps) => {
     setIsFullscreen(isCurrentlyFullscreen);
   };
   useEventListener("fullscreenchange", handleFullscreenChange, wrapperRef);
-  useTracks([Track.Source.Camera, Track.Source.Microphone]).filter((track) => {
-    if (videoRef.current) {
-      track.publication.track?.attach(videoRef.current);
-    }
-  });
+  useTracks([Track.Source.Camera, Track.Source.Microphone])
+    .filter((track) => track.participant.identity === participant.identity)
+    .forEach((track) => {
+      if (videoRef.current) {
+        track.publication.track?.attach(videoRef.current);
+      }
+    });
   return (
     <div className="relative h-full flex" ref={wrapperRef}>
       <video ref={videoRef} width="100%" />
