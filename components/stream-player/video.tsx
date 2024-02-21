@@ -14,19 +14,22 @@ import { LiveVideo } from "./live-video";
 interface VideoProps {
   hostName: string;
   hostIdentity: string;
+  token: string;
 }
-export const Video = ({ hostIdentity, hostName }: VideoProps) => {
+export const Video = ({ hostIdentity, hostName, token }: VideoProps) => {
   const connectionState = useConnectionState();
   const participant = useRemoteParticipant(hostIdentity);
   const tracks = useTracks([
     Track.Source.Camera,
     Track.Source.Microphone,
+    Track.Source.ScreenShare,
+    Track.Source.ScreenShareAudio,
   ]).filter((track) => track.participant.identity === hostIdentity);
 
   let content;
 
   if (!participant && connectionState === ConnectionState.Connected) {
-    content = <OfflineVideo username={hostName} />;
+    content = <OfflineVideo username={hostName} token={token} />;
   } else if (!participant || tracks.length === 0) {
     content = <LoadingVideo label={connectionState} />;
   } else {
